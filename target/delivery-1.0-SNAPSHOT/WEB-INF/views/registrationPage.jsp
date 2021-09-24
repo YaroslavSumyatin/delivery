@@ -12,7 +12,6 @@
 <div class="container">
 <jsp:include page="_header.jsp"></jsp:include>
 <main class="container_main">
-<h3>Login Page</h3>
 <p style="color: red;">${errorMessage}</p>
 <form method="POST" action="${pageContext.request.contextPath}/registration">
     <table border="0">
@@ -43,7 +42,6 @@
         <tr>
             <td colspan ="2">
                 <input type="submit" value= "Submit" />
-                <a href="${pageContext.request.contextPath}/">Cancel</a>
             </td>
         </tr>
     </table>

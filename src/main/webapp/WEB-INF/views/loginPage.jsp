@@ -9,9 +9,9 @@
     </style>
 </head>
 <body>
+<div class="container">
 <jsp:include page="_header.jsp"></jsp:include>
 <main class="container_main">
-<h3>Login Page</h3>
 <p style="color: red;">${errorMessage}</p>
 <form method="POST" action="${pageContext.request.contextPath}/login">
     <table border="0">
@@ -31,8 +31,8 @@
         </tr>
     </table>
 </form>
-<p style="color:blue;">User Name: tom, password: tom001 or jerry/jerry001</p>
 </main>
 <jsp:include page="_footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
