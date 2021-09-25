@@ -151,7 +151,8 @@ body {
 }
 
 .userprofile_applications,
-.manage_content {
+.manage_applications-content,
+.manage_waybills-content {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -160,7 +161,8 @@ body {
 }
 
 .userprofile_applications-item,
-.manage_applications-item {
+.manage_applications-item,
+.manage_waybills-item {
     height: 20%;
     width: 20%;
     border: solid black;

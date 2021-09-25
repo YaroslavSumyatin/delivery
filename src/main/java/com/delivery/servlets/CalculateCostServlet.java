@@ -79,6 +79,5 @@ public class CalculateCostServlet extends HttpServlet {
             req.setAttribute("cost", tariff.getDeliveryCost());
         }
         doGet(req, resp);
-        //resp.sendRedirect(req.getContextPath() + "/calculation");
     }
 }

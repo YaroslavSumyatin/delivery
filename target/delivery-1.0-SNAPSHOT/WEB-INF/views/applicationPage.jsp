@@ -38,12 +38,12 @@
                     </select>
                 </div>
                 <div class="application_content-inputs">
-                    Length: <input type="number" name="length"/>
-                    Width: <input type="number" name="width">
-                    Height: <input type="number" name="height"/>
-                    Weight: <input type="number" name="weight">
-                    Receive Date: <input type="date" name="receiveDate"/>
-                    Baggage Type: <select name="baggageType">
+                    Length: <input type="number" name="length" required/>
+                    Width: <input type="number" name="width" required/>
+                    Height: <input type="number" name="height" required/>
+                    Weight: <input type="number" name="weight" required/>
+                    Receive Date: <input type="date" name="receiveDate" required/>
+                    Baggage Type: <select name="baggageType" required>
                         <option value="${Application.BAGGAGE_DOCUMENTS}">${Application.BAGGAGE_DOCUMENTS}</option>
                         <option value="${Application.BAGGAGE_FRAGILE}">${Application.BAGGAGE_FRAGILE}</option>
                         <option value="${Application.BAGGAGE_CLOTHES}">${Application.BAGGAGE_CLOTHES}</option>

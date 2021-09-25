@@ -17,9 +17,9 @@ public class TariffDAO {
 
     private static final Logger log = Logger.getLogger(TariffDAO.class.getName());
 
-    private static final String SQL_FIND_ALL_TARIFF_SIZE = "SELECT * FROM tariff_size";
-    private static final String SQL_FIND_ALL_TARIFF_WEIGHT = "SELECT * FROM tariff_weight";
-    private static final String SQL_FIND_ALL_TARIFF_DISTANCE = "SELECT * FROM tariff_distance";
+    private static final String SQL_FIND_ALL_TARIFF_SIZE = "SELECT * FROM tariff_size ORDER BY cost";
+    private static final String SQL_FIND_ALL_TARIFF_WEIGHT = "SELECT * FROM tariff_weight ORDER BY cost";
+    private static final String SQL_FIND_ALL_TARIFF_DISTANCE = "SELECT * FROM tariff_distance ORDER BY cost";
 
     private static final String SQL_TARIFF_SIZE_COST = "SELECT cost FROM tariff_size WHERE size>=? ORDER BY size LIMIT 1";
     private static final String SQL_TARIFF_WEIGHT_COST = "SELECT cost FROM tariff_weight WHERE weight>=? ORDER BY weight LIMIT 1";

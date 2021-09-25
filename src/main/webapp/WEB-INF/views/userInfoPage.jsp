@@ -17,7 +17,8 @@
         Name: ${user.name} <br>
         Surname: ${user.surname} <br>
         Email: ${user.email} <br>
-        <a href="${pageContext.request.contextPath}/profile/edit">Edit userinfo</a><br>
+        <a href="${pageContext.request.contextPath}/profile/edit">Edit userinfo</a>&nbsp;
+        <a id="delete_link" href="${pageContext.request.contextPath}/profile/delete" onclick="return check()">Delete an account</a><br>
         <div class="userprofile_applications">
             <c:forEach items="${applications}" var="a">
                 <div class="userprofile_applications-item">
@@ -36,10 +37,12 @@
                             <input type="submit" value="Pay"/>
                         </form>
                     </c:if>
-                    <form id="delete_app${a.id}" action="${pageContext.request.contextPath}/profile" method="post">
-                        <input type="hidden" name="application" value="${a.id}">
-                        <input type="button" value="Delete" onclick="return check(${a.id})"/>
-                    </form>
+                    <c:if test="${not (a.state eq Application.STATE_SENT)}">
+                        <form id="delete_app${a.id}" action="${pageContext.request.contextPath}/profile" method="post">
+                            <input type="hidden" name="application" value="${a.id}">
+                            <input type="button" value="Cancel Application" onclick="return check(${a.id})"/>
+                        </form>
+                    </c:if>
                 </div>
             </c:forEach>
         </div>
@@ -48,6 +51,10 @@
 <jsp:include page="_footer.jsp"></jsp:include>
 </div>
 <script type="text/javascript">
+    function check(){
+        confirm('Are u sure?')
+    }
+
     function check(a){
         const form = document.getElementById("delete_app".concat(a));
         if (confirm('Are you sure?')){
