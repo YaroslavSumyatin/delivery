@@ -1,0 +1,2 @@
+2021-09-26 23:50:02 ERROR UserDAO:134 - Can't insert new user. Duplicate entry 'Paranoyepiped' for key 'user.login_UNIQUE'
+2021-09-26 23:52:49 ERROR UserDAO:133 - Can't insert new user. Duplicate entry 'librafatum@gmail.com' for key 'user.email_UNIQUE'
