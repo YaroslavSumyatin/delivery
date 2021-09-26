@@ -4,13 +4,15 @@ import com.delivery.database.DBUtils;
 import com.delivery.database.PasswordUtils;
 import com.delivery.database.entities.User;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public class UserDAO implements EntityDAO<User> {
+
+    private static final Logger log = Logger.getLogger(UserDAO.class);
 
     private static final String SQL_FIND_BY_ID = "SELECT * FROM user WHERE id=?";
     private static final String SQL_FIND_BY_LOGIN = "SELECT * FROM user WHERE login=?";
@@ -37,7 +39,7 @@ public class UserDAO implements EntityDAO<User> {
             }
         } catch (SQLException e) {
             String message = "Can't find user with id=" + id;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -62,7 +64,7 @@ public class UserDAO implements EntityDAO<User> {
             }
         } catch (SQLException e) {
             String message = "Can't find user with login=" + login;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -95,7 +97,7 @@ public class UserDAO implements EntityDAO<User> {
             }
         } catch (SQLException e) {
             String message = "Can't find all users";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -128,7 +130,7 @@ public class UserDAO implements EntityDAO<User> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't insert new user";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -154,7 +156,7 @@ public class UserDAO implements EntityDAO<User> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't update user with id=" + user.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message, e);
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -186,7 +188,7 @@ public class UserDAO implements EntityDAO<User> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't delete user with id=" + user.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message, e);
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
