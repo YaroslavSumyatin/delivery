@@ -1,8 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.delivery.database.entities.Application"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${not empty sessionScope.lang ? sessionScope.lang : 'ua'}"/>
+<fmt:setBundle basename="resources"/>
 <!DOCTYPE html>
-<html>
+<html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
     <title>Calculate Cost Page</title>

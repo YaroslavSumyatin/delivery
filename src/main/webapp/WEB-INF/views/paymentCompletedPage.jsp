@@ -13,14 +13,13 @@
 </head>
 <body>
 <div class="container">
-<jsp:include page="_header.jsp"/>
-<main class="container_main">
-    This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
-    This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
-    This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
-    This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
-</main>
-<jsp:include page="_footer.jsp"/>
+    <jsp:include page="_header.jsp"></jsp:include>
+    <main class="container_main">
+        <div class="payment_completed">
+            Payment completed!
+        </div>
+    </main>
+    <jsp:include page="_footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

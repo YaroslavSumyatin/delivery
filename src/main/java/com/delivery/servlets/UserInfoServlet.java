@@ -2,9 +2,11 @@ package com.delivery.servlets;
 
 import com.delivery.database.dao.ApplicationDAO;
 import com.delivery.database.dao.DepartmentDAO;
+import com.delivery.database.dao.WaybillDAO;
 import com.delivery.database.entities.Application;
 import com.delivery.database.entities.Department;
 import com.delivery.database.entities.User;
+import com.delivery.database.entities.Waybill;
 import com.delivery.exceptions.DBException;
 import com.delivery.filters.Utils;
 
@@ -30,15 +32,19 @@ public class UserInfoServlet extends HttpServlet {
         req.setAttribute("user", user);
         List<Application> applications = null;
         List<Department> departments = null;
+        List<Waybill> waybills = null;
         try {
             applications = appDAO.findAllByUser(user.getId());
             DepartmentDAO deptDAO = new DepartmentDAO();
             departments = deptDAO.findAll();
+            WaybillDAO waybillDAO = new WaybillDAO();
+            waybills = waybillDAO.findAll();
         } catch (DBException e) {
             e.printStackTrace();
         }
         req.setAttribute("applications", applications);
         req.setAttribute("departments", departments);
+        req.setAttribute("waybills", waybills);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/userInfoPage.jsp");
         dispatcher.forward(req, resp);
     }
