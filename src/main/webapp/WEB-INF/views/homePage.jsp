@@ -15,10 +15,9 @@
 <div class="container">
 <jsp:include page="_header.jsp"/>
 <main class="container_main">
-    This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
-    This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
-    This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
-    This is demo Simple web application using jsp,servlet &amp; Jdbc. <br><br>
+    <div class="home_page-content">
+        <fmt:message key="home.greeting"/>
+    </div>
 </main>
 <jsp:include page="_footer.jsp"/>
 </div>

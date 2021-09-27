@@ -8,7 +8,7 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Calculate Cost Page</title>
+    <title><fmt:message key="calculate_cost.calculate_cost_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
@@ -20,18 +20,18 @@
         <div class="calculate_content">
             <form action="${pageContext.request.contextPath}/calculation" method="post">
                 <div class="application_content-select">
-                    From:
+                    <fmt:message key="application.from"/>:
                     <select name="departmentFrom" class="application-department-from" required>
-                        <option value="">--Choose--</option>
+                        <option value="">--<fmt:message key="application.choose_department"/>--</option>
                         <c:forEach items="${departments}" var="d">
                             <option value="${d.id}" ${idFrom eq d.id ? "selected" : ""}>
                                     ${d.index.concat(", ").concat(d.address)}
                             </option>
                         </c:forEach>
                     </select>
-                    To:
+                    <fmt:message key="application.to"/>
                     <select name="departmentTo" class="application-department-to" required>
-                        <option value="">--Choose--</option>
+                        <option value="">--<fmt:message key="application.choose_department"/>--</option>
                         <c:forEach items="${departments}" var="d">
                             <option value="${d.id}" ${idTo eq d.id ? "selected" : ""} >
                                     ${d.index.concat(", ").concat(d.address)}
@@ -40,15 +40,17 @@
                     </select>
                 </div>
                 <div class="application_content-inputs">
-                    Length: <input type="number" name="length" value="${length}" required/>
-                    Width: <input type="number" name="width" value="${width}" required/>
-                    Height: <input type="number" name="height" value="${height}" required/>
-                    Weight: <input type="number" name="weight" value="${weight}" required>
+                    <fmt:message key="application.length"/>: <input type="number" name="length" value="${length}" required/><fmt:message key="cm"/>
+                    <fmt:message key="application.width"/>: <input type="number" name="width" value="${width}" required/><fmt:message key="cm"/>
+                    <fmt:message key="application.height"/>: <input type="number" name="height" value="${height}" required/><fmt:message key="cm"/>
+                    <fmt:message key="application.weight"/>: <input type="number" name="weight" value="${weight}" required><fmt:message key="kg"/>
                 </select>
                 </div>
-                <input type="submit" value="Calculate">
+                <input type="submit" value="<fmt:message key="calculate_cost.calculate"/>">
             </form>
-            ${not empty cost ? "Calculated cost ".concat(cost).concat(" UAH") : ""}
+            <c:if test="${not empty cost}">
+                <fmt:message key="calculate_cost.calculated_cost"/>:&nbsp;${cost}&nbsp;<fmt:message key="uah"/>
+            </c:if>
         </div>
     </main>
     <jsp:include page="_footer.jsp"/>

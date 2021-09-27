@@ -8,7 +8,7 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Application Page</title>
+    <title><fmt:message key="application.application_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
@@ -21,18 +21,18 @@
             <form action="${pageContext.request.contextPath}/application" method="post">
                 <input type="hidden" name="user" value="${user.id}"/>
                 <div class="application_content-select">
-                    From:
+                    <fmt:message key="application.from"/>:
                     <select name="departmentFrom" class="application-department-from">
-                        <option>--Choose--</option>
+                            <option>--<fmt:message key="application.choose_department"/>--</option>
                         <c:forEach items="${departments}" var="d">
                             <option value="${d.id}" ${indexFrom eq d.index ? "selected" : ""}>
                                     ${d.index.concat(", ").concat(d.address)}
                             </option>
                         </c:forEach>
                     </select>
-                    To:
+                    <fmt:message key="application.to"/>:
                     <select name="departmentTo" class="application-department-to">
-                        <option>--Choose--</option>
+                        <option>--<fmt:message key="application.choose_department"/>--</option>
                         <c:forEach items="${departments}" var="d">
                             <option value="${d.id}" ${indexTo eq d.index ? "selected" : ""} >
                                     ${d.index.concat(", ").concat(d.address)}
@@ -41,19 +41,19 @@
                     </select>
                 </div>
                 <div class="application_content-inputs">
-                    Length: <input type="number" name="length" required/>
-                    Width: <input type="number" name="width" required/>
-                    Height: <input type="number" name="height" required/>
-                    Weight: <input type="number" name="weight" required/>
-                    Receive Date: <input type="date" name="receiveDate" required/>
-                    Baggage Type: <select name="baggageType" required>
-                        <option value="${Application.BAGGAGE_DOCUMENTS}">${Application.BAGGAGE_DOCUMENTS}</option>
-                        <option value="${Application.BAGGAGE_FRAGILE}">${Application.BAGGAGE_FRAGILE}</option>
-                        <option value="${Application.BAGGAGE_CLOTHES}">${Application.BAGGAGE_CLOTHES}</option>
-                        <option value="${Application.BAGGAGE_PACKAGE}">${Application.BAGGAGE_PACKAGE}</option>
+                    <fmt:message key="application.length"/>: <input type="number" name="length" required/><fmt:message key="cm"/>
+                    <fmt:message key="application.width"/>: <input type="number" name="width" required/><fmt:message key="cm"/>
+                    <fmt:message key="application.height"/>: <input type="number" name="height" required/><fmt:message key="cm"/>
+                    <fmt:message key="application.weight"/>: <input type="number" name="weight" required/><fmt:message key="kg"/>
+                    <fmt:message key="application.receive_date"/>: <input type="date" name="receiveDate" required/>
+                    <fmt:message key="application.baggage_type"/>: <select name="baggageType" required>
+                        <option value="${Application.BAGGAGE_DOCUMENTS}"><fmt:message key="application.baggage_type.documents"/></option>
+                        <option value="${Application.BAGGAGE_FRAGILE}"><fmt:message key="application.baggage_type.fragile"/></option>
+                        <option value="${Application.BAGGAGE_CLOTHES}"><fmt:message key="application.baggage_type.clothes"/></option>
+                        <option value="${Application.BAGGAGE_PACKAGE}"><fmt:message key="application.baggage_type.package"/></option>
                     </select>
                 </div>
-                <input type="submit" value="Submit">
+                <input type="submit" value="<fmt:message key="application.create_application"/>">
             </form>
         </div>
     </main>

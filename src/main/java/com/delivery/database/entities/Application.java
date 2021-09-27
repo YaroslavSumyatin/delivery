@@ -10,8 +10,8 @@ public class Application implements Entity{
     public static final String BAGGAGE_CLOTHES = "clothes";
     public static final String BAGGAGE_PACKAGE = "package";
 
-    public static final String STATE_IN_PROCESSING ="in processing";
-    public static final String STATE_WAITING_FOR_PAYMENT = "waiting for payment";
+    public static final String STATE_IN_PROCESSING ="in_processing";
+    public static final String STATE_WAITING_FOR_PAYMENT = "waiting_for_payment";
     public static final String STATE_SENT = "sent";
 
     private int id;

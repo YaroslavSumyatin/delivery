@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Waybill implements Entity {
 
-    public static final String STATE_WAITING_FOR_PAYMENT = "waiting for payment";
+    public static final String STATE_WAITING_FOR_PAYMENT = "waiting_for_payment";
     public static final String STATE_PAID = "paid";
 
     private int id;

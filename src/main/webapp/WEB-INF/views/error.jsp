@@ -7,7 +7,7 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title><fmt:message key="error.error_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
@@ -18,14 +18,14 @@
     <main class="container_main">
         <c:set var="code" value="${requestScope['javax.servlet.error.status_code']}"/>
         <c:choose>
-            <c:when test="${code == 404}">
-                Oops, page not found!
+            <c:when test="${code == 403}">
+                <fmt:message key="error.403"/>
             </c:when>
-            <c:when test="${code == 500}">
-                There was a mistake by our side. Don't worry we will fix it sooner.
+            <c:when test="${code == 404}">
+                <fmt:message key="error.404"/>
             </c:when>
             <c:otherwise>
-                <c:out value="${requestScope['javax.servlet.error.message']}"/>
+                <fmt:message key="error.500"/>
             </c:otherwise>
         </c:choose>
     </main>

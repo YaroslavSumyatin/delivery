@@ -38,9 +38,10 @@ public class RegistrationServlet extends HttpServlet {
         user.setRole(User.ROLE_USER);
         boolean hasError = false;
         String errorMessage = null;
+        String errorPass = null;
         if (!password.equals(password2)) {
             hasError = true;
-            errorMessage = "password1 != password2";
+            errorPass = "password1 != password2";
         }
         user.setPassword(password);
         try {
@@ -54,6 +55,7 @@ public class RegistrationServlet extends HttpServlet {
 
         if(hasError) {
             req.setAttribute("user", user);
+            req.setAttribute("errorPass", errorPass);
             req.setAttribute("errorMessage", errorMessage);
             doGet(req, resp);
         } else {

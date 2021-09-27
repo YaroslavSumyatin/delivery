@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
         } catch (DBException e) {
             errorMessage = e.getMessage();
             hasError = true;
-            log(e.getMessage(), e);
         }
 
         if (hasError) {
@@ -51,14 +50,13 @@ public class LoginServlet extends HttpServlet {
             user.setPassword(password);
             req.setAttribute("errorMessage", errorMessage);
             req.setAttribute("user", user);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/loginPage.jsp");
-            dispatcher.forward(req, resp);
+            doGet(req, resp);
         } else {
             HttpSession session = req.getSession();
             Utils.setUserInSession(session, user);
             Utils.deleteUserCookie(resp);
+            resp.sendRedirect(req.getContextPath() + "/profile");
         }
 
-        resp.sendRedirect(req.getContextPath() + "/profile");
     }
 }

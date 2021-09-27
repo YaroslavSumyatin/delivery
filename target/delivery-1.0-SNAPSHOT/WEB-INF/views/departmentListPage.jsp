@@ -8,18 +8,18 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Product List</title>
+    <title><fmt:message key="departments.departments_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
 </head>
 <body>
 <div class="container">
-<jsp:include page="_header.jsp"></jsp:include>
+<jsp:include page="_header.jsp"/>
 <main class="container_main">
     <div class="container_departments">
         <div class="departments_sidebar">
-            <a href="${pageContext.request.contextPath}/departments">Усі міста</a><br/>
+            <a href="${pageContext.request.contextPath}/departments"><fmt:message key="departments.all_cities"/></a><br/>
             <c:forEach items="${cities}" var="city">
                 <a href="${pageContext.request.contextPath}/departments?city=${city.name}">${city.name}</a><br/>
             </c:forEach>
@@ -42,17 +42,17 @@
                             </c:forEach>
                         </div>
                         <div class="departments_item-number">
-                            Отделение № ${d.number}
+                            <fmt:message key="departments.department"/>&nbsp;№&nbsp;${d.number}
                         </div>
                     </div>
                     <div class="departments_item-buttons_wrapper">
                         <form action="${pageContext.request.contextPath}/application">
                             <input type="hidden" name="departmentFrom" value="${d.index}">
-                            <input type="submit" value="Order delivery from">
+                            <input type="submit" value="<fmt:message key="departments.order_delivery_from_this_department"/>">
                         </form>
                         <form action="${pageContext.request.contextPath}/application">
                             <input type="hidden" name="departmentTo" value="${d.index}">
-                            <input type="submit" value="Order delivery to">
+                            <input type="submit" value="<fmt:message key="departments.order_delivery_to_this_department"/>">
                         </form>
                     </div>
                 </div>
@@ -86,7 +86,6 @@
         </div>
     </div>
 </main>
-<jsp:include page="_footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

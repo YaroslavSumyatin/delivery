@@ -8,14 +8,14 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title><fmt:message key="manage_apps.manage_apps_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
 </head>
 <body>
 <div class="container">
-    <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_header.jsp"/>
     <main class="container_main">
         <div class="manage_applications-content">
             <c:forEach items="${applications}" var="a">
@@ -23,26 +23,26 @@
                 <div class="manage_applications-item">
                     <c:forEach items="${departments}" var="d">
                         <c:if test="${a.department1Id eq d.id}">
-                            From: ${d.index.concat(", ").concat(d.address)}<br>
+                            <fmt:message key="application.from"/>: ${d.index.concat(", ").concat(d.address)}<br>
                         </c:if>
                         <c:if test="${a.department2Id eq d.id}">
-                            To: ${d.index.concat(", ").concat(d.address)}<br>
+                            <fmt:message key="application.to"/>: ${d.index.concat(", ").concat(d.address)}<br>
                         </c:if>
                     </c:forEach>
-                    BaggageType: ${a.baggageType}<br>
-                    State: ${a.state}<br>
-                    Size: ${a.size}<br>
-                    Weight: ${a.weight}<br>
+                    <fmt:message key="application.baggage_type"/>: <fmt:message key="application.baggage_type.${a.baggageType}"/><br>
+                    <fmt:message key="application.state"/>: <fmt:message key="application.state.${a.state}"/><br>
+                    <fmt:message key="size"/>: ${a.size} <fmt:message key="cm.3"/><br>
+                    <fmt:message key="application.weight"/>: ${a.weight} <fmt:message key="kg"/><br>
                     <form action="${pageContext.request.contextPath}/manage/applications/formwaybill">
                         <input type="hidden" name="application" value="${a.id}">
-                        <input type="submit" value="Create waybill"/>
+                        <input type="submit" value=<fmt:message key="manage_apps.form_waybill"/>"/>
                     </form>
                 </div>
                 </c:if>
             </c:forEach>
         </div>
     </main>
-    <jsp:include page="_footer.jsp"></jsp:include>
+    <jsp:include page="_footer.jsp"/>
 </div>
 </body>
 </html>

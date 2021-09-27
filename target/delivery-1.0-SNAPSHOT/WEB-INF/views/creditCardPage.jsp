@@ -6,7 +6,7 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Payment Page</title>
+    <title><fmt:message key="payment.payment_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
         .credit_card-container {
@@ -377,7 +377,7 @@
     <main class="container_main">
         <div class="credit_card-container">
             <div class="payment-title">
-                <h1>Waybill Payment</h1>
+                <h1><fmt:message key="payment.waybill_payment"/></h1>
             </div>
             <div class="container-card preload">
                 <div class="creditcard">
@@ -479,11 +479,11 @@
             </div>
             <div class="form-container">
                 <div class="field-container">
-                    <label for="name">Name</label>
+                    <label for="name"><fmt:message key="payment.name"/></label>
                     <input id="name" maxlength="20" type="text">
                 </div>
                 <div class="field-container">
-                    <label for="cardnumber">Card Number</label><span id="generatecard">generate random</span>
+                    <label for="cardnumber"><fmt:message key="payment.card_number"/></label><span id="generatecard"><fmt:message key="payment.generate_random"/></span>
                     <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric">
                     <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -491,17 +491,17 @@
                     </svg>
                 </div>
                 <div class="field-container">
-                    <label for="expirationdate">Expiration (mm/yy)</label>
+                    <label for="expirationdate"><fmt:message key="payment.expiration"/></label>
                     <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric">
                 </div>
                 <div class="field-container">
-                    <label for="securitycode">Security Code</label>
+                    <label for="securitycode"><fmt:message key="payment.security_code"/></label>
                     <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric">
                 </div>
                 <div class="credit_card-submit">
                     <form action="${pageContext.request.contextPath}/payment/completion" method="post">
                         <input type="hidden" name="application" value="${appId}">
-                        <input type="submit" value="Confirm">
+                        <input type="submit" value="<fmt:message key="payment.confirm"/>">
                     </form>
                 </div>
             </div>
