@@ -31,9 +31,9 @@ public class ManageApplicationsServlet extends HttpServlet {
         List<Application> applications = null;
         List<Department> departments = null;
         try {
-            ApplicationDAO appDAO = new ApplicationDAO();
+            ApplicationDAO appDAO = ApplicationDAO.getInstance();
             applications = appDAO.findAll();
-            DepartmentDAO deptDAO = new DepartmentDAO();
+            DepartmentDAO deptDAO = DepartmentDAO.getInstance();
             departments = deptDAO.findAll();
         } catch (DBException e) {
             log.error(e.getMessage());

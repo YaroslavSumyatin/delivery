@@ -23,7 +23,7 @@ public class DeleteUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = Utils.getUserInSession(session);
-        UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = UserDAO.getInstance();
         try {
             userDAO.delete(user);
             resp.sendRedirect(req.getContextPath() + "/logout");

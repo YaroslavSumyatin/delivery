@@ -25,7 +25,7 @@ public class FormWaybillServlet extends HttpServlet {
         int managerId = Integer.parseInt(req.getParameter("manager"));
         float cost = Float.parseFloat(req.getParameter("cost"));
         String state = Waybill.STATE_WAITING_FOR_PAYMENT;
-        WaybillDAO waybillDAO = new WaybillDAO();
+        WaybillDAO waybillDAO = WaybillDAO.getInstance();
         try {
             Waybill waybill = new Waybill();
             waybill.setApplicationId(appId);
@@ -33,7 +33,7 @@ public class FormWaybillServlet extends HttpServlet {
             waybill.setCost(cost);
             waybill.setState(state);
             waybillDAO.insert(waybill);
-            ApplicationDAO appDAO = new ApplicationDAO();
+            ApplicationDAO appDAO = ApplicationDAO.getInstance();
             Application application = appDAO.findById(appId);
             application.setState(Application.STATE_WAITING_FOR_PAYMENT);
             appDAO.update(application);
@@ -46,16 +46,16 @@ public class FormWaybillServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int applicationId = Integer.parseInt(req.getParameter("application"));
-        ApplicationDAO applicationDAO = new ApplicationDAO();
+        ApplicationDAO applicationDAO = ApplicationDAO.getInstance();
         Application app = null;
         try {
             app = applicationDAO.findById(applicationId);
         } catch (DBException e) {
             log.error(e.getMessage());
         }
-        DepartmentDAO departmentDAO = new DepartmentDAO();
-        CityDAO cityDAO = new CityDAO();
-        TariffDAO tariffDAO = new TariffDAO();
+        DepartmentDAO departmentDAO = DepartmentDAO.getInstance();
+        CityDAO cityDAO = CityDAO.getInstance();
+        TariffDAO tariffDAO = TariffDAO.getInstance();
         Department departmentFrom = new Department();
         Department departmentTo = new Department();
         City cityFrom = new City();

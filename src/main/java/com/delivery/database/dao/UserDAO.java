@@ -23,6 +23,18 @@ public class UserDAO implements EntityDAO<User> {
             "WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM user WHERE id=?";
 
+    private static UserDAO instance;
+
+    private UserDAO() {
+    }
+
+    public static UserDAO getInstance() {
+        if (instance == null) {
+            instance = new UserDAO();
+        }
+        return instance;
+    }
+
     @Override
     public User findById(int id) throws DBException {
         Connection con = null;

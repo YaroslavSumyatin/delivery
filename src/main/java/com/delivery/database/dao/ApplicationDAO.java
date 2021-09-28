@@ -24,6 +24,18 @@ public class ApplicationDAO implements EntityDAO<Application> {
             "WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM application WHERE id=?";
 
+    private static ApplicationDAO instance;
+
+    private ApplicationDAO() {
+    }
+
+    public static ApplicationDAO getInstance() {
+        if (instance == null) {
+            instance = new ApplicationDAO();
+        }
+        return instance;
+    }
+
     @Override
     public Application findById(int id) throws DBException {
         Connection con = null;

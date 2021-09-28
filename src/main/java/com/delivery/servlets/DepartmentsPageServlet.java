@@ -39,12 +39,12 @@ public class DepartmentsPageServlet extends HttpServlet {
         if (req.getParameter("page") != null) {
             page = Integer.parseInt(req.getParameter("page"));
         }
-        DepartmentDAO departmentDAO = new DepartmentDAO();
+        DepartmentDAO departmentDAO = DepartmentDAO.getInstance();
         String errorMessage = null;
         List<Department> list = null;
         List<City> cities = null;
         try {
-            CityDAO cityDAO = new CityDAO();
+            CityDAO cityDAO = CityDAO.getInstance();
             int records = 0;
             if (city == null) {
                 records = departmentDAO.findAll().size();

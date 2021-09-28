@@ -38,7 +38,7 @@ public class ReportServlet extends HttpServlet {
             log.error("Can't parse date 2");
         }
         Date date2 = new Date(parsed.getTime());
-        ReportDAO reportDAO = new ReportDAO();
+        ReportDAO reportDAO = ReportDAO.getInstance();
         List<Report> report = null;
         try {
             report = reportDAO.formReport(date1, date2);

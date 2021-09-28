@@ -25,7 +25,7 @@ import java.util.List;
 public class UserInfoServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(UserInfoServlet.class);
-    private final ApplicationDAO appDAO = new ApplicationDAO();
+    private final ApplicationDAO appDAO = ApplicationDAO.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,9 +37,9 @@ public class UserInfoServlet extends HttpServlet {
         List<Waybill> waybills = null;
         try {
             applications = appDAO.findAllByUser(user.getId());
-            DepartmentDAO deptDAO = new DepartmentDAO();
+            DepartmentDAO deptDAO = DepartmentDAO.getInstance();
             departments = deptDAO.findAll();
-            WaybillDAO waybillDAO = new WaybillDAO();
+            WaybillDAO waybillDAO = WaybillDAO.getInstance();
             waybills = waybillDAO.findAll();
         } catch (DBException e) {
             log.error(e.getMessage());

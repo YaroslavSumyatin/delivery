@@ -48,7 +48,7 @@ public class RegistrationServlet extends HttpServlet {
         }
         user.setPassword(password);
         try {
-            UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = UserDAO.getInstance();
             userDAO.insert(user);
         } catch (DBException e) {
             hasError = true;

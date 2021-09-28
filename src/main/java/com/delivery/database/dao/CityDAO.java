@@ -22,6 +22,18 @@ public class CityDAO implements EntityDAO<City> {
             "WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM city WHERE id=?";
 
+    private static CityDAO instance;
+
+    private CityDAO() {
+    }
+
+    public static CityDAO getInstance() {
+        if (instance == null) {
+            instance = new CityDAO();
+        }
+        return instance;
+    }
+
     @Override
     public City findById(int id) throws DBException {
         Connection con = null;

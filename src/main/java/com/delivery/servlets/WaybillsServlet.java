@@ -30,9 +30,9 @@ public class WaybillsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        WaybillDAO waybillDAO = new WaybillDAO();
-        UserDAO userDAO = new UserDAO();
-        ApplicationDAO appDAO = new ApplicationDAO();
+        WaybillDAO waybillDAO = WaybillDAO.getInstance();
+        UserDAO userDAO = UserDAO.getInstance();
+        ApplicationDAO appDAO = ApplicationDAO.getInstance();
         List<Waybill> waybills = null;
         List<Application> applications = null;
         List<User> users = null;

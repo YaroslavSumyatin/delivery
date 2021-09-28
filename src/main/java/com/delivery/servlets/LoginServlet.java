@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         String errorMessage = null;
 
         try {
-            UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = UserDAO.getInstance();
             user = userDAO.validateUser(login, password);
             if (user == null) {
                 hasError = true;

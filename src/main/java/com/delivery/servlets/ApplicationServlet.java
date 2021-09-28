@@ -38,7 +38,7 @@ public class ApplicationServlet extends HttpServlet {
         if (req.getParameter("departmentTo") != null) indexTo = req.getParameter("departmentTo");
         req.setAttribute("indexFrom", indexFrom);
         req.setAttribute("indexTo", indexTo);
-        DepartmentDAO departmentDAO = new DepartmentDAO();
+        DepartmentDAO departmentDAO = DepartmentDAO.getInstance();
         List<Department> depts = null;
         try {
             depts = departmentDAO.findAll();
@@ -70,7 +70,7 @@ public class ApplicationServlet extends HttpServlet {
             log.error(e.getMessage());
         }
         Date receiveDate = new Date(parsed.getTime());
-        ApplicationDAO applicationDAO = new ApplicationDAO();
+        ApplicationDAO applicationDAO = ApplicationDAO.getInstance();
         try {
             Application app = new Application();
             app.setDepartment1Id(departmentFrom);

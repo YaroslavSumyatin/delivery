@@ -6,7 +6,7 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title><fmt:message key="payment.payment_page"/></title>
+    <title>Payment</title>
     <style>
         <%@include file="../css/style.css"%>
         .credit_card-container {

@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class TariffDAO {
 
     private static final Logger log = Logger.getLogger(TariffDAO.class);
@@ -24,6 +23,18 @@ public class TariffDAO {
     private static final String SQL_TARIFF_SIZE_COST = "SELECT cost FROM tariff_size WHERE size>=? ORDER BY size LIMIT 1";
     private static final String SQL_TARIFF_WEIGHT_COST = "SELECT cost FROM tariff_weight WHERE weight>=? ORDER BY weight LIMIT 1";
     private static final String SQL_TARIFF_DISTANCE_COST = "SELECT cost FROM tariff_distance WHERE distance=?";
+
+    private static TariffDAO instance;
+
+    private TariffDAO() {
+    }
+
+    public static TariffDAO getInstance() {
+        if (instance == null) {
+            instance = new TariffDAO();
+        }
+        return instance;
+    }
 
     /*
      * Calculate which tariffs would be used based on size, weight and distance of delivery

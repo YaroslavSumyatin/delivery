@@ -49,7 +49,7 @@ public class EditUserServlet extends HttpServlet {
             }
         }
         User newData = new User();
-        UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = UserDAO.getInstance();
         newData.setId(id);
         newData.setLogin(login);
         newData.setEmail(email);

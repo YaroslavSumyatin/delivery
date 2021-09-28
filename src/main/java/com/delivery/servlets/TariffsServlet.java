@@ -21,7 +21,7 @@ public class TariffsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        TariffDAO tariffDAO = new TariffDAO();
+        TariffDAO tariffDAO = TariffDAO.getInstance();
         List<Tariff> tariffsSize = null;
         List<Tariff> tariffsWeight = null;
         List<Tariff> tariffsDistance = null;

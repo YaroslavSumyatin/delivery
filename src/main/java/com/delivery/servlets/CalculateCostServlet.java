@@ -26,7 +26,7 @@ public class CalculateCostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Department> departmentList = null;
-        DepartmentDAO departmentDAO = new DepartmentDAO();
+        DepartmentDAO departmentDAO = DepartmentDAO.getInstance();
         try {
             departmentList = departmentDAO.findAll();
         } catch (DBException e) {
@@ -52,9 +52,9 @@ public class CalculateCostServlet extends HttpServlet {
         req.setAttribute("idFrom", departmentFromId);
         int departmentToId = Integer.parseInt(req.getParameter("departmentTo"));
         req.setAttribute("idTo", departmentToId);
-        DepartmentDAO departmentDAO = new DepartmentDAO();
-        CityDAO cityDAO = new CityDAO();
-        TariffDAO tariffDAO = new TariffDAO();
+        DepartmentDAO departmentDAO = DepartmentDAO.getInstance();
+        CityDAO cityDAO = CityDAO.getInstance();
+        TariffDAO tariffDAO = TariffDAO.getInstance();
         Department departmentFrom;
         Department departmentTo;
         City cityFrom = null;

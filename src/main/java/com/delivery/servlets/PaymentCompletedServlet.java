@@ -29,8 +29,8 @@ public class PaymentCompletedServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int appId = Integer.parseInt(req.getParameter("application"));
-        WaybillDAO waybillDAO = new WaybillDAO();
-        ApplicationDAO appDAO = new ApplicationDAO();
+        WaybillDAO waybillDAO = WaybillDAO.getInstance();
+        ApplicationDAO appDAO = ApplicationDAO.getInstance();
         try {
             Application app = appDAO.findById(appId);
             app.setState(Application.STATE_SENT);

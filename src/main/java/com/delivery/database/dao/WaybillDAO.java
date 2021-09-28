@@ -22,6 +22,18 @@ public class WaybillDAO implements EntityDAO<Waybill> {
             "WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM application WHERE id=?";
 
+    private static WaybillDAO instance;
+
+    private WaybillDAO() {
+    }
+
+    public static WaybillDAO getInstance() {
+        if (instance == null) {
+            instance = new WaybillDAO();
+        }
+        return instance;
+    }
+
     @Override
     public Waybill findById(int id) throws DBException {
         Connection con = null;

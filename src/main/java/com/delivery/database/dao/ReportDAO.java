@@ -25,6 +25,18 @@ public class ReportDAO {
             "AS q INNER JOIN waybill w ON q.id = w.application_id " +
             "WHERE q.`date` BETWEEN ? AND ?";
 
+    private static ReportDAO instance;
+
+    private ReportDAO() {
+    }
+
+    public static ReportDAO getInstance() {
+        if (instance == null) {
+            instance = new ReportDAO();
+        }
+        return instance;
+    }
+
     /*
      * Form a report between two dates
      */

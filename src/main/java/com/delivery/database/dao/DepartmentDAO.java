@@ -26,6 +26,17 @@ public class DepartmentDAO implements EntityDAO<Department> {
     private static final String SQL_SUBLIST_CITY = "SELECT * FROM department WHERE city_id=? " +
             "ORDER BY department.index LIMIT ? OFFSET ?";
 
+    private static DepartmentDAO instance;
+
+    private DepartmentDAO() {
+    }
+
+    public static DepartmentDAO getInstance() {
+        if (instance == null) {
+            instance = new DepartmentDAO();
+        }
+        return instance;
+    }
 
     @Override
     public Department findById(int id) throws DBException {
