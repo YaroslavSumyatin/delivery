@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = { "/tariffs" })
+@WebServlet(urlPatterns = {"/tariffs"})
 public class TariffsServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(TariffsServlet.class);

@@ -3,7 +3,8 @@ package com.delivery.database.entities;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class UserTest {
 
@@ -15,12 +16,12 @@ public class UserTest {
     }
 
     @Test
-    public void testConstUser(){
+    public void testConstUser() {
         assertEquals("user", User.ROLE_USER);
     }
 
     @Test
-    public void testConstManager(){
+    public void testConstManager() {
         assertEquals("manager", User.ROLE_MANAGER);
     }
 

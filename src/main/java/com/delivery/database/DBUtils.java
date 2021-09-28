@@ -20,9 +20,9 @@ public class DBUtils {
         return ds.getConnection();
     }
 
-    public static void close(Connection connection){
-        if (connection != null){
-            try{
+    public static void close(Connection connection) {
+        if (connection != null) {
+            try {
                 connection.close();
             } catch (SQLException e) {
                 String message = "Can't close Connection";
@@ -31,9 +31,9 @@ public class DBUtils {
         }
     }
 
-    public static void close(ResultSet resultSet){
-        if (resultSet != null){
-            try{
+    public static void close(ResultSet resultSet) {
+        if (resultSet != null) {
+            try {
                 resultSet.close();
             } catch (SQLException e) {
                 String message = "Can't close ResultSet";
@@ -42,9 +42,9 @@ public class DBUtils {
         }
     }
 
-    public static void close(Statement statement){
-        if (statement != null){
-            try{
+    public static void close(Statement statement) {
+        if (statement != null) {
+            try {
                 statement.close();
             } catch (SQLException e) {
                 String message = "Can't close Statement";

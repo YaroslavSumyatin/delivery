@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = { "/profile" })
+@WebServlet(urlPatterns = {"/profile"})
 public class UserInfoServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(UserInfoServlet.class);
@@ -56,7 +56,7 @@ public class UserInfoServlet extends HttpServlet {
         int appId = Integer.parseInt(req.getParameter("application"));
         Application app = new Application();
         app.setId(appId);
-        try{
+        try {
             appDAO.delete(app);
         } catch (DBException e) {
             log.error(e.getMessage());

@@ -56,7 +56,7 @@ public class RegistrationServlet extends HttpServlet {
             log.error(e.getMessage());
         }
 
-        if(hasError) {
+        if (hasError) {
             req.setAttribute("user", user);
             req.setAttribute("errorPass", errorPass);
             req.setAttribute("errorMessage", errorMessage);

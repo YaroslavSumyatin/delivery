@@ -34,7 +34,7 @@ public class UserDAO implements EntityDAO<User> {
             pstmt = con.prepareStatement(SQL_FIND_BY_ID);
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 user = initUser(resultSet);
             }
         } catch (SQLException e) {
@@ -62,7 +62,7 @@ public class UserDAO implements EntityDAO<User> {
             pstmt = con.prepareStatement(SQL_FIND_BY_LOGIN);
             pstmt.setString(1, login);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 user = initUser(resultSet);
             }
         } catch (SQLException e) {
@@ -129,7 +129,7 @@ public class UserDAO implements EntityDAO<User> {
             prepareUserForPreparedStatement(pstmt, user);
             if (pstmt.executeUpdate() != 1) return false;
             resultSet = pstmt.getGeneratedKeys();
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 user.setId(resultSet.getInt(1));
             }
             DBUtils.commit(con);

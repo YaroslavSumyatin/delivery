@@ -14,7 +14,7 @@ public class UserFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpSession session = req.getSession();
-        if (session.getAttribute("userInSession") == null){
+        if (session.getAttribute("userInSession") == null) {
             HttpServletResponse resp = (HttpServletResponse) servletResponse;
             resp.sendRedirect(req.getContextPath() + "/login");
             return;

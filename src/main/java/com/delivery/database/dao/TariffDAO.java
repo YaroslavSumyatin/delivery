@@ -38,19 +38,19 @@ public class TariffDAO {
             pstmt = con.prepareStatement(SQL_TARIFF_SIZE_COST);
             pstmt.setInt(1, size);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 tariff.setSizeCost(resultSet.getFloat("cost") * size);
             }
             pstmt = con.prepareStatement(SQL_TARIFF_WEIGHT_COST);
             pstmt.setFloat(1, weight);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 tariff.setWeightCost(resultSet.getFloat("cost") * weight);
             }
             pstmt = con.prepareStatement(SQL_TARIFF_DISTANCE_COST);
             pstmt.setString(1, distance);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 tariff.setDistanceCost(resultSet.getFloat("cost"));
             }
             tariff.calculateCost();

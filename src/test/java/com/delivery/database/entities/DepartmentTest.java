@@ -10,26 +10,26 @@ public class DepartmentTest {
     Department dep;
 
     @Before
-    public void initDepartment(){
+    public void initDepartment() {
         dep = new Department();
     }
 
     @Test
-    public void testSetGetIndex(){
+    public void testSetGetIndex() {
         String index = "00000";
         dep.setIndex(index);
         assertEquals(index, dep.getIndex());
     }
 
     @Test
-    public void testSetGetNumber(){
+    public void testSetGetNumber() {
         int num = 1;
         dep.setNumber(1);
         assertEquals(num, dep.getNumber());
     }
 
     @Test
-    public void testSetGetAddress(){
+    public void testSetGetAddress() {
         String address = "address";
         dep.setAddress(address);
         assertEquals(address, dep.getAddress());

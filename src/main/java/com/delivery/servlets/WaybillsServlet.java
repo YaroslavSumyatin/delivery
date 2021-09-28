@@ -36,7 +36,7 @@ public class WaybillsServlet extends HttpServlet {
         List<Waybill> waybills = null;
         List<Application> applications = null;
         List<User> users = null;
-        try{
+        try {
             waybills = waybillDAO.findAll();
             applications = appDAO.findAll();
             users = userDAO.findAll();

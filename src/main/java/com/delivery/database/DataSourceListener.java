@@ -27,7 +27,7 @@ public class DataSourceListener implements ServletContextListener {
             Context initContext = new InitialContext();
             Context envContext = (Context) initContext.lookup("java:/comp/env");
             ds = (DataSource) envContext.lookup("jdbc/DB");
-        } catch (NamingException e){
+        } catch (NamingException e) {
             String message = "Can't initialise data source";
             log.error(message + ". " + e.getMessage());
             throw new IllegalStateException(message, e);

@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public class CityDAO implements EntityDAO<City> {
 
@@ -34,7 +33,7 @@ public class CityDAO implements EntityDAO<City> {
             pstmt = con.prepareStatement(SQL_FIND_BY_ID);
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 city = initCity(resultSet);
             }
         } catch (SQLException e) {
@@ -62,7 +61,7 @@ public class CityDAO implements EntityDAO<City> {
             pstmt = con.prepareStatement(SQL_FIND_BY_NAME);
             pstmt.setString(1, name);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 city = initCity(resultSet);
             }
         } catch (SQLException e) {
@@ -123,7 +122,7 @@ public class CityDAO implements EntityDAO<City> {
             prepareCityForPreparedStatement(pstmt, city);
             if (pstmt.executeUpdate() != 1) return false;
             resultSet = pstmt.getGeneratedKeys();
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 city.setId(resultSet.getInt(1));
             }
             DBUtils.commit(con);

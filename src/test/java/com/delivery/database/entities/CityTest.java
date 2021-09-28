@@ -10,12 +10,12 @@ public class CityTest {
     private City city;
 
     @Before
-    public void initCity(){
+    public void initCity() {
         city = new City();
     }
 
     @Test
-    public void testSetGetCityRegion(){
+    public void testSetGetCityRegion() {
         String cityName = "Харків";
         String region = "Донецька";
         city.setName(cityName);

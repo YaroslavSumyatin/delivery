@@ -10,53 +10,53 @@ public class ApplicationTest {
     private Application app;
 
     @Before
-    public void initApplication(){
+    public void initApplication() {
         app = new Application();
     }
 
     @Test
-    public void testConstDocuments(){
+    public void testConstDocuments() {
         assertEquals("documents", Application.BAGGAGE_DOCUMENTS);
     }
 
     @Test
-    public void testConstPackage(){
+    public void testConstPackage() {
         assertEquals("package", Application.BAGGAGE_PACKAGE);
     }
 
     @Test
-    public void testConstFragile(){
+    public void testConstFragile() {
         assertEquals("fragile", Application.BAGGAGE_FRAGILE);
     }
 
     @Test
-    public void testConstClothes(){
+    public void testConstClothes() {
         assertEquals("clothes", Application.BAGGAGE_CLOTHES);
     }
 
     @Test
-    public void testConstInProcessing(){
+    public void testConstInProcessing() {
         assertEquals("in_processing", Application.STATE_IN_PROCESSING);
     }
 
     @Test
-    public void testConstSent(){
+    public void testConstSent() {
         assertEquals("sent", Application.STATE_SENT);
     }
 
     @Test
-    public void testConstWaitingForPayment(){
+    public void testConstWaitingForPayment() {
         assertEquals("waiting_for_payment", Application.STATE_WAITING_FOR_PAYMENT);
     }
 
     @Test
-    public void testSetGetState(){
+    public void testSetGetState() {
         app.setState(Application.STATE_SENT);
         assertEquals(Application.STATE_SENT, app.getState());
     }
 
     @Test
-    public void testSetGetBaggageType(){
+    public void testSetGetBaggageType() {
         app.setBaggageType(Application.BAGGAGE_CLOTHES);
         assertEquals(Application.BAGGAGE_CLOTHES, app.getBaggageType());
     }

@@ -1,6 +1,7 @@
 html {
     height: 100%;
 }
+
 body {
     height: 100%;
     margin: 0;
@@ -22,8 +23,8 @@ body {
     display: flex;
 }
 
-.container_footer{
-    background-color: #0F0F0F;
+.container_footer {
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 10px;
@@ -50,7 +51,7 @@ body {
 }
 
 .active {
-    background-color: #04AA6D;
+    background-color: #757575;
 }
 
 .menu_right {
@@ -65,10 +66,20 @@ body {
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #04AA6D;
+    background-color: #757575;
     position: fixed;
     height: 100%;
     overflow: auto;
+}
+
+.departments_sidebar a {
+    margin: 50px 0 0 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.departments_sidebar a:hover {
+    color: white;
 }
 
 .departments_content {
@@ -90,7 +101,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: red;
+    color: black;
+    text-shadow: #333 2px 1px;
     font-size: 40px;
 }
 
@@ -104,6 +116,7 @@ body {
     display: flex;
     flex-wrap: wrap;
 }
+
 .departments_item-buttons_wrapper {
     flex-basis: 30%;
 }
@@ -113,7 +126,7 @@ body {
     margin: 15px;
 }
 
-.departments_item-buttons_wrapper form input{
+.departments_item-buttons_wrapper form input {
     width: 100%;
     height: 100%;
 }
@@ -133,7 +146,7 @@ body {
     border-radius: 10px;
 }
 
-.tariff_table-container table{
+.tariff_table-container table {
     table-layout: fixed;
     border-collapse: collapse;
     border: solid black;
@@ -144,6 +157,7 @@ body {
     padding: 20px;
     width: 200px;
     height: 50px;
+    border: solid black;
 }
 
 .report-content {
@@ -155,14 +169,15 @@ body {
     text-align: center;
 }
 
-.report-content table{
+.report-content table {
     table-layout: fixed;
     border: solid black;
     border-radius: 10px;
     border-collapse: collapse;
 }
 
-.report-content th, td {
+.report-content th,
+.report-content td {
     border: solid black;
     padding: 10px;
 }
@@ -174,7 +189,7 @@ body {
     margin: 0 auto;
 }
 
-.userinfo_content{
+.userinfo_content {
     width: 100%;
 }
 
@@ -191,15 +206,18 @@ body {
 .userprofile_applications-item,
 .manage_applications-item,
 .manage_waybills-item {
-    height: 20%;
-    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    width: 30%;
     border: solid black;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
 }
 
-.home_page-content{
+.home_page-content {
     height: 100%;
     width: 100%;
     background-image: url('https://postandparcel.info/wp-content/uploads/2018/06/Delivery-Truck.jpg');
@@ -212,6 +230,98 @@ body {
     align-items: center;
     font-size: 100px;
     color: white;
+    font-style: italic;
+    text-shadow: black 2px 1px;
+}
+
+.page-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.form {
+    width: 50%;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.form label{
+    float: left;
+}
+
+.departments_content input{
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form input[type=submit],
+.departments_content input[type=submit]{
+    color: white;
+    background-color: #333;
+}
+
+.form input[type=submit]:hover,
+.departments_content input[type=submit]:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #111;
+}
+
+.form a,
+.departments_content-pages a,
+.userinfo_content a {
+    text-decoration: none;
+    color: black;
+}
+
+.form a:hover,
+.departments_content-pages a:hover,
+.userinfo_content a:hover {
+    color: grey;
+}
+
+.departments_content-pages table{
+    table-layout: fixed;
+    border: solid black;
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+.departments_content-pages th,
+.departments_content-pages td {
+    border: solid black;
+    padding: 10px;
+}
+
+.userinfo_content {
+    margin: 10px;
+}
+
+.label-page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    color: #333;
     font-style: italic;
     text-shadow: black 2px 1px;
 }

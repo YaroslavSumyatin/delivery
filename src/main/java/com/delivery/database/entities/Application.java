@@ -3,14 +3,14 @@ package com.delivery.database.entities;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class Application implements Entity{
+public class Application implements Entity {
 
     public static final String BAGGAGE_DOCUMENTS = "documents";
     public static final String BAGGAGE_FRAGILE = "fragile";
     public static final String BAGGAGE_CLOTHES = "clothes";
     public static final String BAGGAGE_PACKAGE = "package";
 
-    public static final String STATE_IN_PROCESSING ="in_processing";
+    public static final String STATE_IN_PROCESSING = "in_processing";
     public static final String STATE_WAITING_FOR_PAYMENT = "waiting_for_payment";
     public static final String STATE_SENT = "sent";
 

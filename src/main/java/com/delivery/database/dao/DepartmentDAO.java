@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public class DepartmentDAO implements EntityDAO<Department> {
 
@@ -39,7 +38,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             pstmt = con.prepareStatement(SQL_FIND_BY_ID);
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 department = initDepartment(resultSet);
             }
         } catch (SQLException e) {
@@ -67,7 +66,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             pstmt = con.prepareStatement(SQL_FIND_BY_CITY_ID);
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 Department department = initDepartment(resultSet);
                 departmentList.add(department);
             }
@@ -93,7 +92,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             pstmt = con.prepareStatement(SQL_FIND_BY_INDEX);
             pstmt.setString(1, index);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 department = initDepartment(resultSet);
             }
         } catch (SQLException e) {
@@ -211,7 +210,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             prepareDepartmentForPreparedStatement(pstmt, department);
             if (pstmt.executeUpdate() != 1) return false;
             resultSet = pstmt.getGeneratedKeys();
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 department.setId(resultSet.getInt(1));
             }
             DBUtils.commit(con);

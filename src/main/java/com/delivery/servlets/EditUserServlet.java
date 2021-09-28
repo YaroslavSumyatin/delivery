@@ -1,6 +1,5 @@
 package com.delivery.servlets;
 
-import com.delivery.database.PasswordUtils;
 import com.delivery.database.dao.UserDAO;
 import com.delivery.database.entities.User;
 import com.delivery.exceptions.DBException;
@@ -45,8 +44,7 @@ public class EditUserServlet extends HttpServlet {
         if (!newPassword1.isEmpty() || !newPassword2.isEmpty()) {
             if (!newPassword1.equals(newPassword2)) {
                 req.setAttribute("errorMessage", "passwords are not equals");
-                resp.sendRedirect(req.getContextPath() + "/login");
-                System.out.println("new password trouble");
+                doGet(req, resp);
                 return;
             }
         }
@@ -60,8 +58,8 @@ public class EditUserServlet extends HttpServlet {
         newData.setSurname(surname);
         newData.setPassword(userInSession.getPassword());
         newData.setSalt(userInSession.getSalt());
-        try{
-            if(newPassword1.isEmpty()) userDAO.update(newData);
+        try {
+            if (newPassword1.isEmpty()) userDAO.update(newData);
             else userDAO.update(newData, newPassword1);
         } catch (DBException e) {
             log.error(e.getMessage());

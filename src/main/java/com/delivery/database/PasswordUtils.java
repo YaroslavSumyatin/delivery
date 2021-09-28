@@ -20,7 +20,7 @@ public class PasswordUtils {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
     private static final SecureRandom RANDOM = new SecureRandom();
 
-    public static String generateSalt(final int length){
+    public static String generateSalt(final int length) {
         byte[] salt = new byte[length];
         RANDOM.nextBytes(salt);
         return Optional.of(Base64.getEncoder().encodeToString(salt)).get();

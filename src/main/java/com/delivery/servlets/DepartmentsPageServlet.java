@@ -29,7 +29,7 @@ public class DepartmentsPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String city = null;
-        if(req.getParameter("city") != null){
+        if (req.getParameter("city") != null) {
             city = req.getParameter("city");
             req.setAttribute("city", city);
         }

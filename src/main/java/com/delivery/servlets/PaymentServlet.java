@@ -21,10 +21,10 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int appId = Integer.parseInt(req.getParameter("application"));
-        try{
+        try {
             ApplicationDAO appDAO = new ApplicationDAO();
             Application app = appDAO.findById(appId);
-            if (!app.getState().equals(Application.STATE_WAITING_FOR_PAYMENT)){
+            if (!app.getState().equals(Application.STATE_WAITING_FOR_PAYMENT)) {
                 resp.sendError(HttpServletResponse.SC_NOT_FOUND);
                 return;
             }

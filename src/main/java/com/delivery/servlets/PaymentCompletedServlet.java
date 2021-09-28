@@ -31,7 +31,7 @@ public class PaymentCompletedServlet extends HttpServlet {
         int appId = Integer.parseInt(req.getParameter("application"));
         WaybillDAO waybillDAO = new WaybillDAO();
         ApplicationDAO appDAO = new ApplicationDAO();
-        try{
+        try {
             Application app = appDAO.findById(appId);
             app.setState(Application.STATE_SENT);
             appDAO.update(app);

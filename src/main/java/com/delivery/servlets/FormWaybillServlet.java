@@ -26,7 +26,7 @@ public class FormWaybillServlet extends HttpServlet {
         float cost = Float.parseFloat(req.getParameter("cost"));
         String state = Waybill.STATE_WAITING_FOR_PAYMENT;
         WaybillDAO waybillDAO = new WaybillDAO();
-        try{
+        try {
             Waybill waybill = new Waybill();
             waybill.setApplicationId(appId);
             waybill.setUserId(managerId);

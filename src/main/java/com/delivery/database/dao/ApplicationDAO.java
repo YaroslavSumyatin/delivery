@@ -8,9 +8,8 @@ import org.apache.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
-public class ApplicationDAO implements EntityDAO<Application>{
+public class ApplicationDAO implements EntityDAO<Application> {
 
     private static final Logger log = Logger.getLogger(ApplicationDAO.class);
 
@@ -36,7 +35,7 @@ public class ApplicationDAO implements EntityDAO<Application>{
             pstmt = con.prepareStatement(SQL_FIND_BY_ID);
             pstmt.setInt(1, id);
             resultSet = pstmt.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 app = initApplication(resultSet);
             }
         } catch (SQLException e) {
@@ -133,7 +132,7 @@ public class ApplicationDAO implements EntityDAO<Application>{
             prepareApplicationForPreparedStatement(pstmt, app);
             if (pstmt.executeUpdate() != 1) return false;
             resultSet = pstmt.getGeneratedKeys();
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 app.setId(resultSet.getInt(1));
             }
             DBUtils.commit(con);

@@ -28,7 +28,8 @@
                         </c:forEach>
                         <c:forEach items="${apps}" var="a">
                             <c:if test="${w.applicationId eq a.id}">
-                                <fmt:message key="application.baggage_type"/>: <fmt:message key="application.baggage_type.${a.baggageType}"/><br>
+                                <fmt:message key="application.baggage_type"/>: <fmt:message
+                                    key="application.baggage_type.${a.baggageType}"/><br>
                                 <fmt:message key="waybills.state"/>: <fmt:message key="waybills.state.${a.state}"/><br>
                                 <fmt:message key="size"/>: ${a.size} <fmt:message key="cm.3"/> <br>
                                 <fmt:message key="application.weight"/>: ${a.weight} <fmt:message key="kg"/> <br>

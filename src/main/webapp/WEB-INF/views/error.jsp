@@ -14,22 +14,24 @@
 </head>
 <body>
 <div class="container">
-    <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_header.jsp"/>
     <main class="container_main">
-        <c:set var="code" value="${requestScope['javax.servlet.error.status_code']}"/>
-        <c:choose>
-            <c:when test="${code == 403}">
-                <fmt:message key="error.403"/>
-            </c:when>
-            <c:when test="${code == 404}">
-                <fmt:message key="error.404"/>
-            </c:when>
-            <c:otherwise>
-                <fmt:message key="error.500"/>
-            </c:otherwise>
-        </c:choose>
+        <div class="label-page">
+            <c:set var="code" value="${requestScope['javax.servlet.error.status_code']}"/>
+            <c:choose>
+                <c:when test="${code == 403}">
+                    <fmt:message key="error.403"/>
+                </c:when>
+                <c:when test="${code == 404}">
+                    <fmt:message key="error.404"/>
+                </c:when>
+                <c:otherwise>
+                    <fmt:message key="error.500"/>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </main>
-    <jsp:include page="_footer.jsp"></jsp:include>
+    <jsp:include page="_footer.jsp"/>
 </div>
 </body>
 </html>
