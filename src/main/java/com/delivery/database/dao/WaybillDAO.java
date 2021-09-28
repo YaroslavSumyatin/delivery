@@ -60,6 +60,9 @@ public class WaybillDAO implements EntityDAO<Waybill> {
         return waybill;
     }
 
+    /*
+     * Find waybill by specified application
+     */
     public Waybill findByApplication(int application_id) throws DBException {
         Connection con = null;
         PreparedStatement pstmt = null;

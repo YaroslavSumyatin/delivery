@@ -49,6 +49,9 @@ public class UserDAO implements EntityDAO<User> {
         return user;
     }
 
+    /*
+     * Find user by specified login
+     */
     public User findByLogin(String login) throws DBException {
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -74,6 +77,9 @@ public class UserDAO implements EntityDAO<User> {
         return user;
     }
 
+    /*
+     * Validate user during login process
+     */
     public User validateUser(String input, String password) throws DBException {
         User user = findByLogin(input);
         if (user == null) return null;
@@ -166,12 +172,15 @@ public class UserDAO implements EntityDAO<User> {
         return true;
     }
 
-    public boolean update(User user, String newPassword) throws DBException {
+    /*
+     * Update user with new password
+     */
+    public void update(User user, String newPassword) throws DBException {
         String salt = PasswordUtils.generateSalt(newPassword.length());
         String hashedPassword = PasswordUtils.hashPassword(newPassword, salt);
         user.setPassword(hashedPassword);
         user.setSalt(salt);
-        return update(user);
+        update(user);
     }
 
     @Override

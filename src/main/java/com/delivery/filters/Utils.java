@@ -25,29 +25,6 @@ public class Utils {
         return (User) session.getAttribute("userInSession");
     }
 
-    public static void setUserCookie(HttpServletResponse resp, User user) {
-        Cookie cookieUserLogin = new Cookie(USER_NAME_ATTR, user.getLogin());
-        cookieUserLogin.setMaxAge(24 * 60 * 60);
-        resp.addCookie(cookieUserLogin);
-    }
-
-    public static String getUserLoginInCookie (HttpServletRequest req) {
-        Cookie[] cookies = req.getCookies();
-        if (cookies == null) return null;
-        for (Cookie c: cookies) {
-            if (USER_NAME_ATTR.equals(c.getName())){
-                return c.getValue();
-            }
-        }
-        return null;
-    }
-
-    public static void deleteUserCookie (HttpServletResponse resp) {
-        Cookie cookieUserLogin = new Cookie(USER_NAME_ATTR, null);
-        cookieUserLogin.setMaxAge(0);
-        resp.addCookie(cookieUserLogin);
-    }
-
     public static void setUTF8Encoding(ServletRequest req, ServletResponse resp){
         try {
             req.setCharacterEncoding("UTF-8");

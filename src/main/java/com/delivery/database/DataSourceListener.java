@@ -9,6 +9,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
 
+/*
+ * Listener to set up data source
+ */
 public class DataSourceListener implements ServletContextListener {
 
     private static final Logger log = Logger.getLogger(DataSourceListener.class);

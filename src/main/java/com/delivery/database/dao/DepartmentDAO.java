@@ -54,6 +54,9 @@ public class DepartmentDAO implements EntityDAO<Department> {
         return department;
     }
 
+    /*
+     * Find departments by specified city
+     */
     public List<Department> findByCityId(int id) throws DBException {
         List<Department> departmentList = new ArrayList<>();
         Connection con = null;

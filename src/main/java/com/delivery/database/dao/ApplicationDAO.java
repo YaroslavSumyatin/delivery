@@ -92,6 +92,9 @@ public class ApplicationDAO implements EntityDAO<Application>{
         return appList;
     }
 
+    /*
+     * Find an applications of specified User
+     */
     public List<Application> findAllByUser(int id) throws DBException {
         List<Application> appList = new ArrayList<>();
         Connection con = null;

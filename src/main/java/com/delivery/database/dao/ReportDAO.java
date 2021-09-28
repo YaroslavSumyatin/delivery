@@ -25,6 +25,9 @@ public class ReportDAO {
             "AS q INNER JOIN waybill w ON q.id = w.application_id " +
             "WHERE q.`date` BETWEEN ? AND ?";
 
+    /*
+     * Form a report between two dates
+     */
     public List<Report> formReport(Date date1, Date date2) throws DBException {
         Connection con = null;
         PreparedStatement pstmt = null;

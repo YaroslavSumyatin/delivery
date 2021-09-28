@@ -25,6 +25,9 @@ public class TariffDAO {
     private static final String SQL_TARIFF_WEIGHT_COST = "SELECT cost FROM tariff_weight WHERE weight>=? ORDER BY weight LIMIT 1";
     private static final String SQL_TARIFF_DISTANCE_COST = "SELECT cost FROM tariff_distance WHERE distance=?";
 
+    /*
+     * Calculate which tariffs would be used based on size, weight and distance of delivery
+     */
     public Tariff getCalculatedTariff(int size, float weight, String distance) throws DBException {
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -63,6 +66,9 @@ public class TariffDAO {
         return tariff;
     }
 
+    /*
+     * Find all tariffs by size
+     */
     public List<Tariff> findAllSize() throws DBException {
         List<Tariff> tariffList = new ArrayList<>();
         Connection con = null;
@@ -90,6 +96,9 @@ public class TariffDAO {
         return tariffList;
     }
 
+    /*
+     * Find all tariffs by weight
+     */
     public List<Tariff> findAllWeight() throws DBException {
         List<Tariff> tariffList = new ArrayList<>();
         Connection con = null;
@@ -117,6 +126,9 @@ public class TariffDAO {
         return tariffList;
     }
 
+    /*
+     * Find all tariffs by distance
+     */
     public List<Tariff> findAllDistance() throws DBException {
         List<Tariff> tariffList = new ArrayList<>();
         Connection con = null;

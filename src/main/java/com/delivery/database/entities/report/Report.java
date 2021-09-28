@@ -2,6 +2,9 @@ package com.delivery.database.entities.report;
 
 import java.sql.Date;
 
+/*
+ * Report contains a results of SQL Query used in java.com.delivery.database.dao.ReportDAO
+ */
 public class Report {
 
     private String address1;

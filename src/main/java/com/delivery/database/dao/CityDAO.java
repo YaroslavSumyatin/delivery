@@ -49,6 +49,9 @@ public class CityDAO implements EntityDAO<City> {
         return city;
     }
 
+    /*
+     * Find city by its name
+     */
     public City findByName(String name) throws DBException {
         Connection con = null;
         PreparedStatement pstmt = null;

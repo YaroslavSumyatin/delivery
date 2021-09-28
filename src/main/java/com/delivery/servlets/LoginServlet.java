@@ -58,7 +58,6 @@ public class LoginServlet extends HttpServlet {
         } else {
             HttpSession session = req.getSession();
             Utils.setUserInSession(session, user);
-            Utils.deleteUserCookie(resp);
             resp.sendRedirect(req.getContextPath() + "/profile");
         }
 

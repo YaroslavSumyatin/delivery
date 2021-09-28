@@ -9,6 +9,10 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Optional;
 
+/*
+ * PasswordUtils helps to encrypt user passwords during
+ * registration process
+ */
 public class PasswordUtils {
 
     public static final int ITERATIONS = 1000;
