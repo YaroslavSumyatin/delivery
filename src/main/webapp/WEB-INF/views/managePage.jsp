@@ -22,6 +22,11 @@
             <form action="${pageContext.request.contextPath}/manage/applications">
                 <input type="submit" value="<fmt:message key="manage.unprocessed_applications"/>">
             </form>
+            <form action="${pageContext.request.contextPath}/manage/report">
+                <input type="date" name="date1" required>
+                <input type="date" name="date2" required>
+                <input type="submit" value="<fmt:message key="manage.report"/>">
+            </form>
         </div>
     </main>
     <jsp:include page="_footer.jsp"/>

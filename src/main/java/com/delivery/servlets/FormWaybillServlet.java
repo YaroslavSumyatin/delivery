@@ -4,6 +4,7 @@ import com.delivery.database.dao.*;
 import com.delivery.database.entities.*;
 import com.delivery.exceptions.DBException;
 import com.delivery.filters.Utils;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,9 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/manage/applications/formwaybill"})
 public class FormWaybillServlet extends HttpServlet {
+
+    private static final Logger log = Logger.getLogger(FormWaybillServlet.class);
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int appId = Integer.parseInt(req.getParameter("application"));
@@ -34,7 +38,7 @@ public class FormWaybillServlet extends HttpServlet {
             application.setState(Application.STATE_WAITING_FOR_PAYMENT);
             appDAO.update(application);
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         resp.sendRedirect(req.getContextPath() + "/manage/applications");
     }
@@ -47,7 +51,7 @@ public class FormWaybillServlet extends HttpServlet {
         try {
             app = applicationDAO.findById(applicationId);
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         DepartmentDAO departmentDAO = new DepartmentDAO();
         CityDAO cityDAO = new CityDAO();
@@ -62,7 +66,7 @@ public class FormWaybillServlet extends HttpServlet {
             cityFrom = cityDAO.findById(departmentFrom.getCityId());
             cityTo = cityDAO.findById(departmentTo.getCityId());
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         String distance = Tariff.DISTANCE_COUNTRY;
         if (cityFrom.getRegion().equals(cityTo.getRegion())) distance = Tariff.DISTANCE_REGION;
@@ -71,7 +75,7 @@ public class FormWaybillServlet extends HttpServlet {
         try {
             tariff = tariffDAO.getCalculatedTariff(app.getSize(), app.getWeight(), distance);
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         req.setAttribute("manager", Utils.getUserInSession(req.getSession()));
         req.setAttribute("tariff", tariff);

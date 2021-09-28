@@ -6,7 +6,7 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title><fmt:message key="payment.payment_completed"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
@@ -16,7 +16,7 @@
     <jsp:include page="_header.jsp"></jsp:include>
     <main class="container_main">
         <div class="payment_completed">
-            Payment completed!
+            <fmt:message key="payment.payment_completed"/>
         </div>
     </main>
     <jsp:include page="_footer.jsp"></jsp:include>

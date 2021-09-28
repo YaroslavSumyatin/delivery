@@ -7,26 +7,26 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Tariffs Page</title>
+    <title><fmt:message key="tariffs.tariffs_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
 </head>
 <body>
 <div class="container">
-    <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_header.jsp"/>
     <main class="container_main">
         <div class="tariff_table-container">
             <div class="tariff_table-container_inner">
             <div class="tariff_size-table">
                 <table>
                     <tr>
-                        <td>Size</td>
-                        <td>Cost for 1 cm^3</td>
+                        <td><fmt:message key="size"/>(<fmt:message key="cm.3"/>)</td>
+                        <td><fmt:message key="cost"/>(<fmt:message key="uah"/>)</td>
                     </tr>
                     <c:forEach items="${size}" var="s">
                         <tr>
-                            <td>${s.size}</td>
+                            <td><fmt:message key="tariffs.until"/> ${s.size}</td>
                             <td>${s.sizeCost}</td>
                         </tr>
                     </c:forEach>
@@ -35,12 +35,12 @@
             <div class="tariff_weight-table">
                 <table>
                     <tr>
-                        <td>Weight</td>
-                        <td>Cost for 1 kg</td>
+                        <td><fmt:message key="application.weight"/>(<fmt:message key="kg"/>)</td>
+                        <td><fmt:message key="cost"/>(<fmt:message key="uah"/>)</td>
                     </tr>
                     <c:forEach items="${weight}" var="w">
                         <tr>
-                            <td>${w.weight}</td>
+                            <td><fmt:message key="tariffs.until"/> ${w.weight}</td>
                             <td>${w.weightCost}</td>
                         </tr>
                     </c:forEach>
@@ -49,12 +49,12 @@
             <div class="tariff_distance-table">
                 <table>
                     <tr>
-                        <td>Distance</td>
-                        <td>Cost</td>
+                        <td><fmt:message key="tariffs.distance"/></td>
+                        <td><fmt:message key="cost"/>(<fmt:message key="uah"/>)</td>
                     </tr>
                     <c:forEach items="${distance}" var="d">
                         <tr>
-                            <td>${d.distance}</td>
+                            <td><fmt:message key="tariffs.distance.${d.distance}"/></td>
                             <td>${d.distanceCost}</td>
                         </tr>
                     </c:forEach>
@@ -63,7 +63,7 @@
             </div>
         </div>
     </main>
-    <jsp:include page="_footer.jsp"></jsp:include>
+    <jsp:include page="_footer.jsp"/>
 </div>
 </body>
 </html>

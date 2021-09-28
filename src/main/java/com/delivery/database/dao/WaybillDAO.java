@@ -3,6 +3,7 @@ package com.delivery.database.dao;
 import com.delivery.database.DBUtils;
 import com.delivery.database.entities.Waybill;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.logging.Level;
 
 public class WaybillDAO implements EntityDAO<Waybill> {
+
+    private static final Logger log = Logger.getLogger(WaybillDAO.class);
 
     private static final String SQL_FIND_BY_ID = "SELECT * FROM waybill WHERE id=?";
     private static final String SQL_FIND_BY_APPLICATION = "SELECT * FROM waybill WHERE application_id=?";
@@ -36,7 +39,7 @@ public class WaybillDAO implements EntityDAO<Waybill> {
             }
         } catch (SQLException e) {
             String message = "Can't find waybill with id=" + id;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -72,7 +75,7 @@ public class WaybillDAO implements EntityDAO<Waybill> {
             }
         } catch (SQLException e) {
             String message = "Can't find waybill with application_id=" + application_id;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -98,7 +101,7 @@ public class WaybillDAO implements EntityDAO<Waybill> {
             }
         } catch (SQLException e) {
             String message = "Can't find all waybills";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -127,7 +130,7 @@ public class WaybillDAO implements EntityDAO<Waybill> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't insert new waybill";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -160,7 +163,7 @@ public class WaybillDAO implements EntityDAO<Waybill> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't update waybill with id=" + waybill.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -184,7 +187,7 @@ public class WaybillDAO implements EntityDAO<Waybill> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't delete waybill with id=" + waybill.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);

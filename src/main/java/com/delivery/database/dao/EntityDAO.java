@@ -8,8 +8,6 @@ import java.util.logging.Logger;
 
 public interface EntityDAO <E extends Entity> {
 
-    Logger log = Logger.getLogger(EntityDAO.class.getName());
-
     E findById(int id) throws DBException;
     List<E> findAll() throws DBException;
     boolean insert(E entity) throws DBException;

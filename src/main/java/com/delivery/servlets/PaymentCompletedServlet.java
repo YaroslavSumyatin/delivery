@@ -5,6 +5,7 @@ import com.delivery.database.dao.WaybillDAO;
 import com.delivery.database.entities.Application;
 import com.delivery.database.entities.Waybill;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,8 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/payment/completion"})
 public class PaymentCompletedServlet extends HttpServlet {
+
+    private static final Logger log = Logger.getLogger(PaymentCompletedServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,7 +39,7 @@ public class PaymentCompletedServlet extends HttpServlet {
             waybill.setState(Waybill.STATE_PAID);
             waybillDAO.update(waybill);
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         resp.sendRedirect(req.getContextPath() + "/payment/completion");
     }

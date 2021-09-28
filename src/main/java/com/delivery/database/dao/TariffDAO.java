@@ -3,6 +3,7 @@ package com.delivery.database.dao;
 import com.delivery.database.DBUtils;
 import com.delivery.database.entities.Tariff;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,12 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class TariffDAO {
 
-    private static final Logger log = Logger.getLogger(TariffDAO.class.getName());
+    private static final Logger log = Logger.getLogger(TariffDAO.class);
 
     private static final String SQL_FIND_ALL_TARIFF_SIZE = "SELECT * FROM tariff_size ORDER BY cost";
     private static final String SQL_FIND_ALL_TARIFF_WEIGHT = "SELECT * FROM tariff_weight ORDER BY cost";
@@ -53,7 +53,7 @@ public class TariffDAO {
             tariff.calculateCost();
         } catch (SQLException e) {
             String message = "Can't find tariffs";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -80,7 +80,7 @@ public class TariffDAO {
             }
         } catch (SQLException e) {
             String message = "Can't find all size tariffs";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -107,7 +107,7 @@ public class TariffDAO {
             }
         } catch (SQLException e) {
             String message = "Can't find all weight tariffs";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -134,7 +134,7 @@ public class TariffDAO {
             }
         } catch (SQLException e) {
             String message = "Can't find all weight tariffs";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);

@@ -6,7 +6,7 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title><fmt:message key="home.home_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>

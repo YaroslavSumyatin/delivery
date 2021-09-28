@@ -7,6 +7,7 @@ import com.delivery.database.entities.Department;
 import com.delivery.database.entities.User;
 import com.delivery.exceptions.DBException;
 import com.delivery.filters.Utils;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,6 +25,8 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/application"})
 public class ApplicationServlet extends HttpServlet {
 
+    private static final Logger log = Logger.getLogger(ApplicationServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -40,7 +43,7 @@ public class ApplicationServlet extends HttpServlet {
         try {
             depts = departmentDAO.findAll();
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         req.setAttribute("departments", depts);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/applicationPage.jsp");
@@ -64,7 +67,7 @@ public class ApplicationServlet extends HttpServlet {
         try {
             parsed = format.parse(req.getParameter("receiveDate"));
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         Date receiveDate = new Date(parsed.getTime());
         ApplicationDAO applicationDAO = new ApplicationDAO();
@@ -80,7 +83,7 @@ public class ApplicationServlet extends HttpServlet {
             app.setReceiveDate(receiveDate);
             applicationDAO.insert(app);
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         resp.sendRedirect(req.getContextPath() + "/application");
     }

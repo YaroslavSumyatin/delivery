@@ -118,7 +118,7 @@ body {
     height: 100%;
 }
 
-.tariff_table-container{
+.tariff_table-container {
     font-size: 20px;
     width: 100%;
     display: flex;
@@ -144,6 +144,27 @@ body {
     padding: 20px;
     width: 200px;
     height: 50px;
+}
+
+.report-content {
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.report-content table{
+    table-layout: fixed;
+    border: solid black;
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+.report-content th, td {
+    border: solid black;
+    padding: 10px;
 }
 
 .departments_content-pages {

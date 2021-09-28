@@ -3,6 +3,7 @@ package com.delivery.database.dao;
 import com.delivery.database.DBUtils;
 import com.delivery.database.entities.Application;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.logging.Level;
 
 public class ApplicationDAO implements EntityDAO<Application>{
+
+    private static final Logger log = Logger.getLogger(ApplicationDAO.class);
 
     private static final String SQL_FIND_BY_ID = "SELECT * FROM application WHERE id=?";
     private static final String SQL_FIND_ALL = "SELECT * FROM application";
@@ -38,7 +41,7 @@ public class ApplicationDAO implements EntityDAO<Application>{
             }
         } catch (SQLException e) {
             String message = "Can't find application with id=" + id;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -79,7 +82,7 @@ public class ApplicationDAO implements EntityDAO<Application>{
             }
         } catch (SQLException e) {
             String message = "Can't find all applications";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -105,7 +108,7 @@ public class ApplicationDAO implements EntityDAO<Application>{
             }
         } catch (SQLException e) {
             String message = "Can't find all applications with user=" + id;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -134,7 +137,7 @@ public class ApplicationDAO implements EntityDAO<Application>{
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't insert new application";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -171,7 +174,7 @@ public class ApplicationDAO implements EntityDAO<Application>{
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't update application with id=" + app.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -195,7 +198,7 @@ public class ApplicationDAO implements EntityDAO<Application>{
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't delete application with id=" + app.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);

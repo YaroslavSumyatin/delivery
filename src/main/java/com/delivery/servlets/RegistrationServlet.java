@@ -3,6 +3,7 @@ package com.delivery.servlets;
 import com.delivery.database.dao.UserDAO;
 import com.delivery.database.entities.User;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/registration"})
 public class RegistrationServlet extends HttpServlet {
+
+    private static final Logger log = Logger.getLogger(RegistrationServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -50,7 +53,7 @@ public class RegistrationServlet extends HttpServlet {
         } catch (DBException e) {
             hasError = true;
             errorMessage = e.getMessage();
-            log(errorMessage, e);
+            log.error(e.getMessage());
         }
 
         if(hasError) {

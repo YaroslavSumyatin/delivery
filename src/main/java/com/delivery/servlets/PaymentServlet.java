@@ -3,6 +3,7 @@ package com.delivery.servlets;
 import com.delivery.database.dao.ApplicationDAO;
 import com.delivery.database.entities.Application;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,8 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/payment"})
 public class PaymentServlet extends HttpServlet {
 
+    private static final Logger log = Logger.getLogger(PaymentServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int appId = Integer.parseInt(req.getParameter("application"));
@@ -26,7 +29,7 @@ public class PaymentServlet extends HttpServlet {
                 return;
             }
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         req.setAttribute("appId", appId);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/creditCardPage.jsp");

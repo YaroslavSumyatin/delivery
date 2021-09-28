@@ -7,6 +7,7 @@ import com.delivery.database.entities.City;
 import com.delivery.database.entities.Department;
 import com.delivery.database.entities.Tariff;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,8 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/calculation"})
 public class CalculateCostServlet extends HttpServlet {
 
+    private static final Logger log = Logger.getLogger(CalculateCostServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Department> departmentList = null;
@@ -27,7 +30,7 @@ public class CalculateCostServlet extends HttpServlet {
         try {
             departmentList = departmentDAO.findAll();
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         req.setAttribute("departments", departmentList);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/calculateCostPage.jsp");
@@ -62,7 +65,7 @@ public class CalculateCostServlet extends HttpServlet {
             cityFrom = cityDAO.findById(departmentFrom.getCityId());
             cityTo = cityDAO.findById(departmentTo.getCityId());
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         String distance = Tariff.DISTANCE_COUNTRY;
         if (cityFrom != null && cityTo != null) {
@@ -73,7 +76,7 @@ public class CalculateCostServlet extends HttpServlet {
         try {
             tariff = tariffDAO.getCalculatedTariff(size, weight, distance);
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if (tariff != null) {
             req.setAttribute("cost", tariff.getDeliveryCost());

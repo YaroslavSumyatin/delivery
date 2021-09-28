@@ -7,6 +7,7 @@ import com.delivery.database.entities.Application;
 import com.delivery.database.entities.User;
 import com.delivery.database.entities.Waybill;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +20,8 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/manage/waybills"})
 public class WaybillsServlet extends HttpServlet {
+
+    private static final Logger log = Logger.getLogger(WaybillsServlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,7 +41,7 @@ public class WaybillsServlet extends HttpServlet {
             applications = appDAO.findAll();
             users = userDAO.findAll();
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         req.setAttribute("waybills", waybills);
         req.setAttribute("apps", applications);

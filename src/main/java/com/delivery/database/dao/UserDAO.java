@@ -156,7 +156,7 @@ public class UserDAO implements EntityDAO<User> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't update user with id=" + user.getId();
-            log.error(message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -188,7 +188,7 @@ public class UserDAO implements EntityDAO<User> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't delete user with id=" + user.getId();
-            log.error(message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);

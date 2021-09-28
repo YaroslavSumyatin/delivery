@@ -9,6 +9,7 @@ import com.delivery.database.entities.User;
 import com.delivery.database.entities.Waybill;
 import com.delivery.exceptions.DBException;
 import com.delivery.filters.Utils;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,6 +24,7 @@ import java.util.List;
 @WebServlet(urlPatterns = { "/profile" })
 public class UserInfoServlet extends HttpServlet {
 
+    private static final Logger log = Logger.getLogger(UserInfoServlet.class);
     private final ApplicationDAO appDAO = new ApplicationDAO();
 
     @Override
@@ -40,7 +42,7 @@ public class UserInfoServlet extends HttpServlet {
             WaybillDAO waybillDAO = new WaybillDAO();
             waybills = waybillDAO.findAll();
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         req.setAttribute("applications", applications);
         req.setAttribute("departments", departments);
@@ -57,7 +59,7 @@ public class UserInfoServlet extends HttpServlet {
         try{
             appDAO.delete(app);
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         resp.sendRedirect(req.getContextPath() + "/profile");
     }

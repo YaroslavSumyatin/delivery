@@ -4,6 +4,7 @@ import com.delivery.database.dao.UserDAO;
 import com.delivery.database.entities.User;
 import com.delivery.exceptions.DBException;
 import com.delivery.filters.Utils;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,8 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/profile/delete"})
 public class DeleteUserServlet extends HttpServlet {
 
+    private static final Logger log = Logger.getLogger(DeleteUserServlet.class);
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -25,7 +28,7 @@ public class DeleteUserServlet extends HttpServlet {
             userDAO.delete(user);
             resp.sendRedirect(req.getContextPath() + "/logout");
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 

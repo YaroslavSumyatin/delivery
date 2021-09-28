@@ -22,6 +22,13 @@ body {
     display: flex;
 }
 
+.container_footer{
+    background-color: #0F0F0F;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
 .header_menu {
     margin: 0;
     padding: 0;
@@ -111,7 +118,7 @@ body {
     height: 100%;
 }
 
-.tariff_table-container{
+.tariff_table-container {
     font-size: 20px;
     width: 100%;
     display: flex;
@@ -137,6 +144,27 @@ body {
     padding: 20px;
     width: 200px;
     height: 50px;
+}
+
+.report-content {
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.report-content table{
+    table-layout: fixed;
+    border: solid black;
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+.report-content th, td {
+    border: solid black;
+    padding: 10px;
 }
 
 .departments_content-pages {
@@ -171,3 +199,19 @@ body {
     margin: 10px;
 }
 
+.home_page-content{
+    height: 100%;
+    width: 100%;
+    background-image: url('https://postandparcel.info/wp-content/uploads/2018/06/Delivery-Truck.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: white;
+    font-style: italic;
+    text-shadow: black 2px 1px;
+}

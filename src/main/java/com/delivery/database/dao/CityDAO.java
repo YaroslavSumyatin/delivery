@@ -3,6 +3,7 @@ package com.delivery.database.dao;
 import com.delivery.database.DBUtils;
 import com.delivery.database.entities.City;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.logging.Level;
 
 public class CityDAO implements EntityDAO<City> {
+
+    private static final Logger log = Logger.getLogger(CityDAO.class);
 
     private static final String SQL_FIND_BY_ID = "SELECT * FROM city WHERE id=?";
     private static final String SQL_FIND_BY_NAME = "SELECT * FROM city WHERE name=?";
@@ -36,7 +39,7 @@ public class CityDAO implements EntityDAO<City> {
             }
         } catch (SQLException e) {
             String message = "Can't find city with id=" + id;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -61,7 +64,7 @@ public class CityDAO implements EntityDAO<City> {
             }
         } catch (SQLException e) {
             String message = "Can't find city with name=" + name;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -95,7 +98,7 @@ public class CityDAO implements EntityDAO<City> {
             }
         } catch (SQLException e) {
             String message = "Can't find all cities";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -124,7 +127,7 @@ public class CityDAO implements EntityDAO<City> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't insert new city";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -155,7 +158,7 @@ public class CityDAO implements EntityDAO<City> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't update city with id=" + city.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -179,7 +182,7 @@ public class CityDAO implements EntityDAO<City> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't delete city with id=" + city.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);

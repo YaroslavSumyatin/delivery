@@ -8,14 +8,14 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title><fmt:message key="waybills.waybills_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
 </head>
 <body>
 <div class="container">
-    <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_header.jsp"/>
     <main class="container_main">
         <div class="manage_waybills-content">
             <c:forEach items="${waybills}" var="w">
@@ -23,24 +23,24 @@
                     <div class="manage_waybills-item">
                         <c:forEach items="${users}" var="u">
                             <c:if test="${w.userId eq u.id}">
-                                Manager who formed waybill: ${u.name.concat(" ").concat(u.surname)}<br>
+                                <fmt:message key="waybills.manager"/>: ${u.name.concat(" ").concat(u.surname)}<br>
                             </c:if>
                         </c:forEach>
                         <c:forEach items="${apps}" var="a">
                             <c:if test="${w.applicationId eq a.id}">
-                                BaggageType: ${a.baggageType}<br>
-                                State: ${a.state}<br>
-                                Size: ${a.size}<br>
-                                Weight: ${a.weight}<br>
+                                <fmt:message key="application.baggage_type"/>: <fmt:message key="application.baggage_type.${a.baggageType}"/><br>
+                                <fmt:message key="waybills.state"/>: <fmt:message key="waybills.state.${a.state}"/><br>
+                                <fmt:message key="size"/>: ${a.size} <fmt:message key="cm.3"/> <br>
+                                <fmt:message key="application.weight"/>: ${a.weight} <fmt:message key="kg"/> <br>
                             </c:if>
                         </c:forEach>
-                        Cost: ${w.cost} &nbsp;грн
+                        <fmt:message key="cost"/>: ${w.cost} <fmt:message key="uah"/>
                     </div>
                 </c:if>
             </c:forEach>
         </div>
     </main>
-    <jsp:include page="_footer.jsp"></jsp:include>
+    <jsp:include page="_footer.jsp"/>
 </div>
 </body>
 </html>

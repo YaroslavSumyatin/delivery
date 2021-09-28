@@ -3,6 +3,7 @@ package com.delivery.servlets;
 import com.delivery.database.dao.TariffDAO;
 import com.delivery.database.entities.Tariff;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,9 +17,10 @@ import java.util.List;
 @WebServlet(urlPatterns = { "/tariffs" })
 public class TariffsServlet extends HttpServlet {
 
+    private static final Logger log = Logger.getLogger(TariffsServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         TariffDAO tariffDAO = new TariffDAO();
         List<Tariff> tariffsSize = null;
         List<Tariff> tariffsWeight = null;
@@ -28,7 +30,7 @@ public class TariffsServlet extends HttpServlet {
             tariffsWeight = tariffDAO.findAllWeight();
             tariffsDistance = tariffDAO.findAllDistance();
         } catch (DBException e) {
-            log("troubles in tariffs page", e);
+            log.error(e.getMessage());
         }
 
         req.setAttribute("size", tariffsSize);
@@ -37,7 +39,6 @@ public class TariffsServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/tariffsPage.jsp");
         dispatcher.forward(req, resp);
-
     }
 
     @Override

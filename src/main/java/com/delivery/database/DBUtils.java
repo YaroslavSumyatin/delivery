@@ -1,18 +1,14 @@
 package com.delivery.database;
 
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DBUtils {
 
-    private static final Logger log = Logger.getLogger(DBUtils.class.getName());
+    private static final Logger log = Logger.getLogger(DBUtils.class);
 
     private static DataSource ds;
 
@@ -29,7 +25,8 @@ public class DBUtils {
             try{
                 connection.close();
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
+                String message = "Can't close Connection";
+                log.error(message + ". " + e.getMessage());
             }
         }
     }
@@ -39,7 +36,8 @@ public class DBUtils {
             try{
                 resultSet.close();
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
+                String message = "Can't close ResultSet";
+                log.error(message + ". " + e.getMessage());
             }
         }
     }
@@ -49,7 +47,8 @@ public class DBUtils {
             try{
                 statement.close();
             } catch (SQLException e) {
-                System.err.println(e.getMessage());
+                String message = "Can't close Statement";
+                log.error(message + ". " + e.getMessage());
             }
         }
     }
@@ -60,7 +59,6 @@ public class DBUtils {
             con.setAutoCommit(opt);
         } catch (SQLException e) {
             String message = "Can't set autoCommit=" + opt;
-            log.log(Level.SEVERE, message, e);
             throw new DBException(message, e);
         }
     }
@@ -71,7 +69,6 @@ public class DBUtils {
             con.commit();
         } catch (SQLException e) {
             String message = "Can't commit";
-            log.log(Level.SEVERE, message, e);
             throw new DBException(message, e);
         }
     }
@@ -82,7 +79,6 @@ public class DBUtils {
             con.rollback();
         } catch (SQLException e) {
             String message = "Can't rollback";
-            log.log(Level.SEVERE, message, e);
             throw new DBException(message, e);
         }
     }
@@ -93,7 +89,6 @@ public class DBUtils {
             con.rollback(sp);
         } catch (SQLException e) {
             String message = "Can't rollback to savepoint=" + sp;
-            log.log(Level.SEVERE, message, e);
             throw new DBException(message, e);
         }
     }

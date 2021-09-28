@@ -1,6 +1,7 @@
 package com.delivery.filters;
 
 import com.delivery.database.entities.User;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -9,12 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Utils {
 
-    private final static Logger log = Logger.getLogger(Utils.class.getName());
+    private final static Logger log = Logger.getLogger(Utils.class);
     public final static String USER_NAME_ATTR = "userNameAttr";
 
     public static void setUserInSession (HttpSession session, User user){
@@ -55,7 +54,7 @@ public class Utils {
             resp.setContentType("text/html; charset=UTF-8");
             resp.setCharacterEncoding("UTF-8");
         } catch (UnsupportedEncodingException e) {
-            log.log(Level.SEVERE, e.getMessage(), e);
+            log.error(e.getMessage());
         }
     }
 

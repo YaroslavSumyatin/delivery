@@ -6,28 +6,30 @@
 <html lang="${sessionScope.lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title><fmt:message key="manage.manage_page"/></title>
     <style>
         <%@include file="../css/style.css"%>
     </style>
 </head>
 <body>
 <div class="container">
-    <jsp:include page="_header.jsp"></jsp:include>
+    <jsp:include page="_header.jsp"/>
     <main class="container_main">
         <div class="management">
             <form action="${pageContext.request.contextPath}/manage/waybills">
-                <input type="submit" value="Unpaid Waybills">
+                <input type="submit" value="<fmt:message key="manage.unpaid_waybills"/>">
             </form>
             <form action="${pageContext.request.contextPath}/manage/applications">
-                <input type="submit" value="Unprocessed Applications">
+                <input type="submit" value="<fmt:message key="manage.unprocessed_applications"/>">
             </form>
-            <form>
-                <input type="submit" value="Get a Report">
+            <form action="${pageContext.request.contextPath}/manage/report">
+                <input type="date" name="date1" required>
+                <input type="date" name="date2" required>
+                <input type="submit" value="<fmt:message key="manage.report"/>">
             </form>
         </div>
     </main>
-    <jsp:include page="_footer.jsp"></jsp:include>
+    <jsp:include page="_footer.jsp"/>
 </div>
 </body>
 </html>

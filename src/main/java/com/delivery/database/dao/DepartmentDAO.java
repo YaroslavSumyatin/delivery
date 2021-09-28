@@ -3,6 +3,7 @@ package com.delivery.database.dao;
 import com.delivery.database.DBUtils;
 import com.delivery.database.entities.Department;
 import com.delivery.exceptions.DBException;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import java.util.List;
 import java.util.logging.Level;
 
 public class DepartmentDAO implements EntityDAO<Department> {
+
+    private static final Logger log = Logger.getLogger(DepartmentDAO.class);
 
     private static final String SQL_FIND_BY_ID = "SELECT * FROM department WHERE id=?";
     private static final String SQL_FIND_BY_INDEX = "SELECT * FROM department WHERE department.index=?";
@@ -41,7 +44,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             }
         } catch (SQLException e) {
             String message = "Can't find department with id=" + id;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -67,7 +70,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             }
         } catch (SQLException e) {
             String message = "Can't find department with city_id=" + id;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -92,7 +95,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             }
         } catch (SQLException e) {
             String message = "Can't find department with index=" + index;
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -128,7 +131,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             }
         } catch (SQLException e) {
             String message = "Can't find all departments";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -155,7 +158,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             }
         } catch (SQLException e) {
             String message = "Can't find departments";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -183,7 +186,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
             }
         } catch (SQLException e) {
             String message = "Can't find departments";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.close(resultSet);
@@ -212,7 +215,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't insert new department";
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -245,7 +248,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't update department with id=" + department.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);
@@ -269,7 +272,7 @@ public class DepartmentDAO implements EntityDAO<Department> {
         } catch (SQLException e) {
             DBUtils.rollback(con);
             String message = "Can't delete department with id=" + department.getId();
-            log.log(Level.SEVERE, message, e);
+            log.error(message + ". " + e.getMessage());
             throw new DBException(message, e);
         } finally {
             DBUtils.setAutoCommit(con, true);

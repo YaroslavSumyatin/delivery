@@ -5,6 +5,7 @@ import com.delivery.database.dao.UserDAO;
 import com.delivery.database.entities.User;
 import com.delivery.exceptions.DBException;
 import com.delivery.filters.Utils;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +18,8 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/profile/edit"})
 public class EditUserServlet extends HttpServlet {
+
+    private static final Logger log = Logger.getLogger(EditUserServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -61,7 +64,7 @@ public class EditUserServlet extends HttpServlet {
             if(newPassword1.isEmpty()) userDAO.update(newData);
             else userDAO.update(newData, newPassword1);
         } catch (DBException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         Utils.setUserInSession(session, newData);
         resp.sendRedirect(req.getContextPath() + "/profile");
